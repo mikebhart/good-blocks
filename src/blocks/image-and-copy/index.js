@@ -16,7 +16,7 @@ const attributes = {
         type: "string",
         source: "html",
         selector: "h2",
-        default: "Diversity matters, across all corners of Our business"
+        default: "Headline Text"
     },
     image: {
         type: "string",
@@ -24,7 +24,7 @@ const attributes = {
     },
     btnLabel: {
         type: "string",
-        default: "Diversity at GB"
+        default: "Button Label"
     },
     btnUrl: {
         type: "string",

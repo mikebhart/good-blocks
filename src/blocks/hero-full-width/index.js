@@ -23,10 +23,10 @@ const attributes = {
 
 registerBlockType("gb/hero-full-width", {
     title: "Hero Full Width",
-    description: "Meet Our People Hero Full Width Block",
+    description: "Hero Full Width Block Description",
     category: "good-blocks",
     icon: "laptop",
-    keywords: ["hero", "full width", "people"],
+    keywords: ["hero", "full width"],
 
     attributes,
 
