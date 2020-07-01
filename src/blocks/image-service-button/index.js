@@ -7,24 +7,17 @@ import { Button } from "@wordpress/components";
 import edit from "./edit";
 
 const attributes = {
-    copy: {
-        type: "string",
-        source: "html",
-        selector: "p"
-    },
-    headline: {
-        type: "string",
-        source: "html",
-        selector: "h2",
-        default: "Image Service Block"
-    },
     image: {
         type: "string",
         default: "http://placehold.it/1920x750"
     },
-    btnLabel: {
+    btnHeadline: {
         type: "string",
-        default: "Some button label"
+        default: "Enter your headline"
+    },
+    btnDescription: {
+        type: "string",
+        default: "Enter your description"
     },
     btnUrl: {
         type: "string",
@@ -44,15 +37,15 @@ registerBlockType("gb/image-service-button", {
     edit,
 
     save: ({ attributes }) => {
-        const { copy, headline, btnLabel, btnUrl, image } = attributes;
+        const { btnHeadline, btnDescription, btnUrl, image } = attributes;
         return (
        
-            <a href={btnUrl} style="text-decoration:none">
+            <a href={btnUrl}>
                 <div class="wp-block-gb-service-image-button">
                     <img src={image}/>
-                    <h3 class="title">{headline}</h3>
+                    <h3 class="title">{btnHeadline}</h3>
                     <div class="box-content">
-                        <div class="box-text"><RichText.Content tagName="p" value={copy} multiline="p" /></div>
+                        <div class="box-text"><RichText.Content tagName="p" value={btnDescription} multiline="p" /></div>
                     </div>
                 </div>
             </a>

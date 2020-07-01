@@ -1,8 +1,9 @@
 import { Component } from "@wordpress/element";
-import { Button, PanelBody, PanelRow, TextControl } from "@wordpress/components";
+import { Button, PanelBody, PanelRow, TextControl, TextareaControl } from "@wordpress/components";
 import { RichText, MediaUpload, InspectorControls } from "@wordpress/editor";
 
 class ImageServiceButton extends Component {
+
     onImageSelect = imageObject => {
         this.props.setAttributes({
             image: imageObject.sizes.full.url
@@ -10,8 +11,8 @@ class ImageServiceButton extends Component {
     };
 
     render() {
-        const { className, attributes } = this.props;
-        const { copy, headline, image, btnLabel, btnUrl } = attributes;
+        const { attributes } = this.props;
+        const { image, btnHeadline, btnDescription, btnUrl } = attributes;
 
         return [
             <InspectorControls>
@@ -30,45 +31,43 @@ class ImageServiceButton extends Component {
                     </PanelRow>
                     <PanelRow className="d-block">
                         <TextControl
+                            label="Button Headline"
+                            value={btnHeadline}
+                            onChange={btnHeadline => this.props.setAttributes({ btnHeadline })}
+                        />
+                    </PanelRow>
+                    <PanelRow className="d-block">
+                        <TextareaControl
+                            label="Button Description"
+                            value={btnDescription}
+                            onChange={btnDescription => this.props.setAttributes({ btnDescription })}
+                        />
+                    </PanelRow>
+                    <PanelRow className="d-block">
+                        <TextControl
                             label="Button Link Url"
                             value={btnUrl}
                             onChange={btnUrl => this.props.setAttributes({ btnUrl })}
                         />
                     </PanelRow>
+                  
+
                 </PanelBody>
             </InspectorControls>,
 
-            <div className={className}>
-                <div className="image-and-copy-block">
-                    <div
-                        className="image-and-copy-block__image-container"
-                        style={{ backgroundImage: `url(${image})` }}
-                    ></div>
-                    <div className="image-and-copy-block__content">
-                        <RichText
-                            className={"image-and-copy-block__content-title"}
-                            onChange={headline => this.props.setAttributes({ headline })}
-                            value={headline}
-                            placeholder={"Write Headline"}
-                            formattingControls={[]}
-                        />
-                        <RichText
-                            className={"image-and-copy-block__content-copy"}
-                            onChange={copy => this.props.setAttributes({ copy })}
-                            value={copy}
-                            placeholder={"Write Copy"}
-                            formattingControls={[]}
-                        />
-                        <button className="gb-button gb-button--green">
-                            <RichText
-                                onChange={btnLabel => this.props.setAttributes({ btnLabel })}
-                                value={btnLabel}
-                                placeholder="Button label"
-                            />
-                        </button>
+
+            <a href={btnUrl}>
+                <div class="wp-block-gb-service-image-button">
+                    <img src={image}/>
+                    <h3 class="title">{btnHeadline}</h3>
+                    <div class="box-content">
+                        <div class="box-text"><RichText.Content tagName="p" value={btnDescription} multiline="p" /></div>
                     </div>
                 </div>
-            </div>
+            </a>
+
+
+          
         ];
     }
 }

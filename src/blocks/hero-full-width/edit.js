@@ -1,5 +1,5 @@
 import { Component } from "@wordpress/element";
-import { Button, PanelBody } from "@wordpress/components";
+import { Button, PanelBody, TextControl } from "@wordpress/components";
 import { RichText, MediaUpload, InspectorControls } from "@wordpress/editor";
 
 class HeroFullWidth extends Component {
