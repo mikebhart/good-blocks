@@ -57,7 +57,7 @@ class ImageServiceButton extends Component {
 
 
             <a href={btnUrl}>
-                <div class="wp-block-gb-service-image-button">
+                <div class="wp-block-gb-service-image-button"> 
                     <img src={image}/>
                     <h3 class="title">{btnHeadline}</h3>
                     <div class="box-content">
